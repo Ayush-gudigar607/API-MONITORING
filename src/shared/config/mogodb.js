@@ -60,7 +60,7 @@ class MongoConnection{
             {
                 await mongoose.disconnect();
                 this.connection=null;
-                logger.info("Mongodb disconnected")
+                logger.info("Mongodb disconnected successfully")
             }
         } catch (error) {
             logger.error("Failed to disconnect to Mongodb",error)
