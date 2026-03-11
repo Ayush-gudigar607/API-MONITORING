@@ -27,7 +27,7 @@ class PostgresConnection {
 
             this.pool.on("error",err=>
             {
-                logger.error("unexpected error on idle pG client ",err)
+                logger.error("unexpected error on idle pg client ",err)
             })
 
             logger.info("PG Pool Created")
