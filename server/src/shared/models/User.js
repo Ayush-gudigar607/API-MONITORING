@@ -126,5 +126,5 @@ next(error)
 userSchema.index({clientId:1,isActive:1})
 userSchema.index({role:1})
 
-const User=mongoose.model("User",userschema)
+const User=mongoose.model("User",userSchema)
 export default User

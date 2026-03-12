@@ -19,7 +19,8 @@ const clientSchema=new mongoose.Schema({
         unique:true,
         trim:true,
         lowercase:true,
-    },email:{
+    },
+    email:{
         type:String,
         required:true,
         lowercase:true,
