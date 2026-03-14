@@ -1,4 +1,4 @@
-class ResponceFormator
+class ResponseFormatter
 {
     static success(data,message="success",statusCode=200)
     {
@@ -7,7 +7,7 @@ class ResponceFormator
             message,
             data,
             statusCode,
-            timestamp:new Date.now().toISOString()
+            timestamp:new Date().toISOString()
         }
     }
     
@@ -18,7 +18,7 @@ class ResponceFormator
             message,
             error,
             statusCode,
-            timestamp:new Date.now().toISOString()
+            timestamp:new Date().toISOString()
         }
     }
 
@@ -29,7 +29,7 @@ class ResponceFormator
             message:"validation failed",
             error,
             statusCode:400,  
-            timestamp:new Date.now().toISOString()          
+            timestamp:new Date().toISOString()          
         }
     }
 
@@ -45,7 +45,7 @@ class ResponceFormator
                 total,
                 totalPages:Math.ceil(total/limit)
             },
-            timestamp:new Date.now().toISOString()         
+            timestamp:new Date().toISOString()         
         }
     }
 
@@ -53,4 +53,4 @@ class ResponceFormator
 
 }
 
-export default ResponceFormator
+export default ResponseFormatter

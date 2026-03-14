@@ -19,7 +19,7 @@ class PostgresConnection {
                 port:config.postgres.port,
                 database:config.postgres.database,
                 user:config.postgres.user,
-                password:config.postgres.user,
+                password:config.postgres.password,
                 max:20, //At a time 20 connection can be done
                 idleTimeoutMillis:30000, //if some connection are not using then this will disconnect automatically
                 connectionTimeoutMillis:2000, //a configuration setting that defines how long the application should wait to establish a connection before giving up and returning an error
@@ -41,7 +41,7 @@ class PostgresConnection {
     try {
         const pool=this.getPool()
         const client=await pool.connect();
-        const result=await client.query("SELECT NOW(")
+        const result=await client.query('SELECT NOW()')
         client.release();  //to return a borrowed database
         logger.info(`PG connected successfully at ${result.rows[0].now} `)
 
@@ -57,7 +57,7 @@ class PostgresConnection {
         const start=Date.now()
         try {
             const result=await pool.query(text,params)
-            const duration=Date().now()-start
+            const duration=Date.now()-start
             logger.info(`Expected query: ${text} with params: ${params} took ${duration} ms`)
             return result
         } catch (error) {

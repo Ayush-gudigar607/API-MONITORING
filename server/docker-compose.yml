@@ -3,16 +3,16 @@ services:
     image: postgres:15-alpine
     container_name: api-monitoring-postgress
     environment:
-        POSTGRES_DB: postgres
+        POSTGRES_DB: api_monitoring
         POSTGRES_PASSWORD: ayush
         POSTGRES_USER: postgres
         POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       # Mount the initialization SQL script
-      - ./scripts/init-postgres.sql:/docker-entrypoint-initdb.d/init-postgres.sql
+      - ./scripts/init-postgress.sql:/docker-entrypoint-initdb.d/init-postgres.sql
     networks:
       - api-monitoring-network
     restart: unless-stopped
@@ -67,6 +67,54 @@ services:
     restart: unless-stopped
     depends_on:
       - postgres
+
+  api-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-monitoring-app
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      # MongoDB (local container)
+      MONGO_URI: mongodb://mongodb:27017/api_monitoring
+      MONGO_DB_NAME: api_monitoring
+      # PostgreSQL (Docker container)
+      PG_HOST: postgres
+      PG_PORT: 5432
+      PG_DATABASE: api_monitoring
+      PG_USER: postgres
+      PG_PASSWORD: ayush
+      # RabbitMQ (Docker container)
+      RABBITMQ_URL: amqp://api_user:secure_password@rabbitmq:5672/api_monitoring
+      RABBITMQ_QUEUE: api_hits
+      # Security
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: 24h
+      # Rate Limiting
+      RATE_LIMIT_WINDOW_MS: 60000
+      RATE_LIMIT_MAX_REQUESTS: 100
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - api-monitoring-network
+    depends_on:
+      mongodb:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  
 
 volumes:
   postgres_data:

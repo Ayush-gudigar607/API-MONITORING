@@ -26,7 +26,7 @@ if(config.node_env !== 'production')
 {
     //if not production print in the console if it is error add in red color (colorize) and print it in simple formate like debug:log or error:log
     logger.add(new winston.transports.Console({
-        format:winston.combine(
+        format:winston.format.combine(
             winston.format.colorize(),
             winston.format.simple()
         )

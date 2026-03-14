@@ -80,3 +80,5 @@ class MongoConnection{
     }
 }
 
+export default new  MongoConnection
+

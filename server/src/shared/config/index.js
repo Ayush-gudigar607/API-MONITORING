@@ -20,7 +20,7 @@ const config={
       port:parseInt(process.env.PG_PORT || '5432',10),
       database:process.env.PG_DATABASE || 'api_monitoring',
       user:process.env.PG_USER || 'postgres',
-      password:process.env.PG_PASSWORD || 'postgres',
+      password:process.env.PG_PASSWORD || 'ayush',
     },
 
     //rabbitmq
@@ -43,6 +43,12 @@ const config={
     windows:parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000',10), //15 MINUTES
     maxRequets:parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '1000',10) //1000 REQ/15 MIN PER IP 
    },
+
+   cookie:{
+    httpOnly:true,
+    secure:process.env.NODE_ENV === 'production', //only send cookie over https in production
+    expireIn:24 * 60 * 60 * 1000 //1 DAY IN MILLISECOND
+   }
 }
 
 export default config

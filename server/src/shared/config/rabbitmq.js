@@ -1,6 +1,6 @@
 import amqp from "amqplib"
 import config from "./index.js"
-import logger from "../utils/logger.js"
+import logger from "./logger.js"
 
 class RabbitMQConnection{
     constructor()
@@ -123,7 +123,7 @@ class RabbitMQConnection{
          }
             }
 
-export default RabbitMQConnection
+export default  new RabbitMQConnection
         
     
 
