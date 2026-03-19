@@ -53,6 +53,7 @@ export class AuthService{
             {
                 throw new AppError("Super Admin onboarding is disabled",403)
             }
+            
             const user=await this.userRepository.create(superAdminData)
             const token=this.generateToken(user)
 
