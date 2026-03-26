@@ -1,10 +1,10 @@
-import logger from "../config/logger";
+import logger from "../config/logger.js";
 
 /**
  * Request logger middleware-centralize request logging
  */
 
-const requirelogger=(req,res,next)=>{
+const requestlogger=(req,res,next)=>{
     const start=Date.now()
     res.on("finish",()=>
     {
@@ -19,4 +19,4 @@ const requirelogger=(req,res,next)=>{
     next()
 };
 
-export default requirelogger
+export default requestlogger

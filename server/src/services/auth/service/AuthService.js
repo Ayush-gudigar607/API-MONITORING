@@ -1,6 +1,7 @@
 import AppError from "../../../shared/utils/AppError.js";
-import config from "../../../shared/config.js";
+import config from "../../../shared/config/index.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import logger from "../../../shared/config/logger.js";
 
 export class AuthService{
@@ -63,6 +64,95 @@ export class AuthService{
         } catch (error) {
            logger.error("Error onboarding Super Admin", error);
            throw error
+        }
+    }
+
+    formatUserForResponse(user) {
+        if (!user) {
+            return null;
+        }
+
+        const userobject = user.toObject ? user.toObject() : { ...user };
+        delete userobject.password;
+        return userobject;
+    }
+
+    comparePassword(EnteredPassword,hashedPassword)
+    {
+        return bcrypt.compare(EnteredPassword,hashedPassword)
+    }
+
+
+    async register(userData)
+    {
+        try {
+            const existingUser=await this.userRepository.findByUsername(userData.username)
+            if(existingUser)
+            {
+                throw new AppError("User with this username already exists",409)
+            }
+
+            const user=await this.userRepository.create(userData)
+            const token=this.generateToken(user)
+
+            logger.info("User registered successfully", { username: user.username });
+            return {user:this.formatUserForResponse(user),token}
+        } catch (error) {
+            logger.error("Error registering user", error);
+            throw error
+        }
+    }
+
+    async login(username,password)
+    {
+        try {
+            const user=await this.userRepository.findByUsername(username)
+            if(!user)
+            {
+                throw new AppError("Invalid username or password",401)
+            }
+
+            if(!user.isActive)
+            {
+                throw new AppError("User account is deactivated",403)
+            }
+
+            const isPassworvalid=await this.comparePassword(password,user.password)
+            if(!isPassworvalid)
+            {
+                throw new AppError("Invalid username or password",401)
+            }
+
+            logger.info("User logged in successfully", { username: user.username });
+            const token=this.generateToken(user)
+            return {user:this.formatUserForResponse(user),token}
+
+        } catch (error) {
+            logger.error("Error logging in user", error);
+            throw error
+        }
+    }
+
+    async getProfile(userId)
+    {
+        try {
+            const user=await this.userRepository.findById(userId)
+            if(!user)
+            {
+                throw new AppError("User not found",404)
+            }
+            return this.formatUserForResponse(user)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async logout()
+    {
+        try {
+            
+        } catch (error) {
+            
         }
     }
 }

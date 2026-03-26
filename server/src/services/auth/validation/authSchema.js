@@ -1,12 +1,18 @@
 import { validate } from "uuid";
 import { isValidRole } from "../../../shared/constants/role.js";
 
+const emailPattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
 export const onboardsuperAdminSchema={
     username:{
         required:true,
     },
     email:{
         required:true,
+        custom: (value) => {
+            if (!value) return null;
+            return emailPattern.test(value) ? null : "email must be valid";
+        }
     },
     password:{
         required:true,
@@ -20,6 +26,10 @@ export const registerSchema={
     },
     email:{
         required:true,
+        custom: (value) => {
+            if (!value) return null;
+            return emailPattern.test(value) ? null : "email must be valid";
+        }
     },
     password:{
         required:true,
