@@ -1,6 +1,5 @@
-import ResponseFormatter from "../utils/responceFormator.js"
+import ResponseFormatter from "../utils/responceFormator"
 import jwt from "jsonwebtoken"
-import logger from "../config/logger.js"
 
 const authentiate=async (req,res,next)=>{
     try {
