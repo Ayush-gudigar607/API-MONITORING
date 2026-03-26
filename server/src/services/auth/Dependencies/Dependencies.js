@@ -1,12 +1,12 @@
 import { AuthController } from "../controller/authcontroller.js";
-import {AuthService} from "../service/Authservice.js"
+import {AuthService} from "../service/AuthService.js"
 import  MongoUserRepository from "../repository/UserRepository.js"
 
 class Container{
     static init()
     {
         const repositories={
-            userRepository:MongoUserRepository()
+            userRepository:MongoUserRepository
         };
 
         const services={

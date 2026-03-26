@@ -10,7 +10,7 @@ class MongoUserRepository extends BaseRepository {
   async create(userdata) {
     try {
       let data = { ...userdata };
-      if (data.role == "super_admin " && !data.permissions) {
+      if (data.role === "super_admin" && !data.permissions) {
         data.permissions = {
           canCreateApiKeys: true,
           canManageUsers: true,
@@ -70,7 +70,7 @@ class MongoUserRepository extends BaseRepository {
   async findAll()
   {
     try {
-        const user=await this.model.find({isActive:true}).Select("-password")
+      const user=await this.model.find({isActive:true}).select("-password")
         return user
     } catch (error) {
         logger.error("Error finding all user", error);

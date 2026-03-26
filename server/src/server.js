@@ -8,12 +8,21 @@ import postgres from './shared/config/postgres.js';
 import rabbitmq from './shared/config/rabbitmq.js';
 import errorhandler from './shared/middlewares/errorHandler.js';
 import ResponseFormatter from './shared/utils/responceFormator.js';
+import cookieParser from 'cookie-parser';
+//Routers
+import authRouter from './services/auth/routes/authRouter.js';
+
+
 
 const app=express();
 
 //middlewares
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+    origin:true,
+    credentials:true
+}));
+app.use(cookieParser());
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true}));
 
@@ -57,6 +66,10 @@ app.get("/",( req,res)=>{
         }
     ))
 })
+
+//api/auth/onboard-super-admin
+app.use("/api/auth",authRouter)
+
 
 app.use((req,res)=>{
   res.status(404).json(ResponseFormatter.error("Endpoints Not Found",404))

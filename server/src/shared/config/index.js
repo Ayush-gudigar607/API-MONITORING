@@ -32,10 +32,10 @@ const config={
         retryDelay:parseInt(process.env.RABBITMQ_RETRY_DELAY || '1000',10)
     },
 
-    //jwt
+   //jwt
    jwt:{
     secret:process.env.JWT_SECRET || 'SABKA_VALENTINE_WEEK_KAISE_CHAL_RAHA_HAI',
-    expireIn:process.env.JWT_EXPIRES_IN || '24h'
+    expiresIn:process.env.JWT_EXPIRES_IN || '24h'
    },
 
    //rate-limit

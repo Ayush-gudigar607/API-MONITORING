@@ -1,5 +1,4 @@
-import { error } from "winston"
-import ResponseFormatter from "../utils/responceFormator"
+import ResponseFormatter from "../utils/responceFormator.js"
 
 const validate=(schema)=>(req,res,next)=>{
     if(!schema)
@@ -17,7 +16,7 @@ const validate=(schema)=>(req,res,next)=>{
             return
         }
 
-         if(res.minLength && typeof value==="string" && value.length<rules.minLength)
+        if(rules.minLength && typeof value==="string" && value.length<rules.minLength)
         {
             errors.push(`${field} must be at least ${rules.minLength} characters long`)
             return
@@ -32,10 +31,15 @@ const validate=(schema)=>(req,res,next)=>{
             }
         }
 
-        if(errors.length>0)
-        {
-            return res.status(400).json(ResponseFormatter.error("Validation failed",400,errors))
-        }
     })
+
+    if(errors.length>0)
+    {
+        return res.status(400).json(ResponseFormatter.error("Validation failed",400,errors))
+    }
+
+    return next()
        
 }
+
+export default validate

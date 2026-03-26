@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { validate } from "uuid";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
+import SecurityUtils from "../utils/securityUtils.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
             !password.startsWith("$2b$")
           ) //password always starts with $2b$ (password is not hashed before)
           {
-            const validation = securityUtils.validatePassword(password);
+            const validation = SecurityUtils.validatePassword(password);
             return validation.success;
           }
           return true; //if password is not modified or already hashed, skip validation
@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema(
         // this will execute only if the password is modified and not hashed before, it will validate the password and return the error message if the validation fails
         message: function (password) {
           if (password && !password.startsWith("$2b$")) {
-            const validation = securityUtils.validatePassword(password);
+            const validation = SecurityUtils.validatePassword(password);
             return validation.errors.join(", ");
           }
 
@@ -61,7 +61,7 @@ const userSchema = new mongoose.Schema(
     },
 
     role: {
-      type: string,
+      type: String,
       enum: ["super_admin", "client_admin", "client_viewer"],
       default: "client_viewer",
     },
@@ -75,7 +75,7 @@ const userSchema = new mongoose.Schema(
     },
 
     isActive: {
-      type: Boolen,
+      type: Boolean,
       default: true,
     },
 

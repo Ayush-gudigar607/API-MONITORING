@@ -3,7 +3,7 @@ import ResponceFormatter from '../utils/responceFormator.js'
 
 const errorhandler=(err,req,res,next)=>
 {
- let statusCode=req.statusCode ||  500;
+ let statusCode=err.statusCode || req.statusCode ||  500;
  let message=err.message ||"Internal server Error"
  let errors=err.errors || null
 
@@ -17,7 +17,12 @@ const errorhandler=(err,req,res,next)=>
     }
  );
 
- if(err.name ==="validationError")
+ if(err instanceof SyntaxError && err.status === 400 && "body" in err)
+ {
+    statusCode=400;
+    message="Invalid JSON body";
+ }
+ else if(err.name ==="ValidationError")
  {
     statusCode=400;
     message="Validation Error"
