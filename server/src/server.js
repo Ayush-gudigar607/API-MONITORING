@@ -29,7 +29,7 @@ app.use(express.urlencoded({extended:true}));
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.path}`, {
         ip: req.ip,
-        userAgent: req.headers['user-agent']
+        userAgent: req.headers['user-agent']  //browser/device info 
     });
     next();
 });
@@ -76,7 +76,6 @@ app.use((req,res)=>{
 })
 
 app.use(errorhandler);
-
 
 async function initializeConnections()
 {
@@ -146,14 +145,13 @@ async function startServer()
                 process.exit(1)
             }, 10000);
 
-           
       };
 
-       process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
-            process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+       process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));  // Handle termination signal (e.g., from Kubernetes)
+            process.on("SIGINT", () => gracefulShutdown("SIGINT")); // Handle interrupt signal (e.g., Ctrl+C)
 
             //HANDLE A UNCAUGHT EXCEPTION 
-            process.on("uncaughtException", (error) => {    
+            process.on("uncaughtException", (error) => {     // Handle uncaught exceptions
                 logger.error("Uncaught Exception:", error);
                 gracefulShutdown("Uncaught Exception");
             });

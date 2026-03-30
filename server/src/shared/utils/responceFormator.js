@@ -43,14 +43,11 @@ class ResponseFormatter
                 page,
                 limit,
                 total,
-                totalPages:Math.ceil(total/limit)
+                totalPages:Math.ceil(total/limit) 
             },
             timestamp:new Date().toISOString()         
         }
     }
-
-
-
 }
 
 export default ResponseFormatter

@@ -84,18 +84,22 @@ const userSchema = new mongoose.Schema(
         type: Boolean,
         default: false,
       },
+      
       CanManageUsers: {
         type: Boolean,
         default: false,
       },
+
       CanViewAnalytics: {
         type: Boolean,
         default: true,
       },
+
       canExportData: {
         type: Boolean,
         default: false,
       },
+
     },
   },
   {

@@ -19,11 +19,12 @@ class MongoUserRepository extends BaseRepository {
         };
       }
 
-      const user = new this.model(data);
+      const user = new this.model(data);  // Create a new instance of the User model with the provided data
       await user.save();
 
       logger.info("user created ", { username: user.username });
       return user;
+
     } catch (error) {
       logger.info("Error creating user", error);
       throw error;
