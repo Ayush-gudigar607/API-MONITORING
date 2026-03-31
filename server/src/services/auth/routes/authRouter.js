@@ -43,7 +43,6 @@ router.route("/onboard-super-admin")
         requestlogger,
         validate(registerSchema),
         (req,res,next)=>authcontroller.register(req,res,next)
-
     )
 
     router.post("/login",

@@ -1,6 +1,8 @@
 import BaseClientRepository from "./BaseClientRepository.js";
 import Client from "../../../shared/models/Client.js"
 import logger from "../../../shared/config/logger.js"
+
+
 class MongoClientRepository extends BaseClientRepository
 {
     constructor()
@@ -20,10 +22,12 @@ class MongoClientRepository extends BaseClientRepository
             const client=new this.model(clientData)
             await client.save()
 
+
             logger.info('Client Created in MongoDB',{
                 mongoId:client._id,
                 slug:client.slug
             })
+            
             return client
         } catch (error) {
             logger.error("Error creating while creation of client",{

@@ -3,6 +3,7 @@ import config from "../../../shared/config/index.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import logger from "../../../shared/config/logger.js";
+import { APPLICATION_ROLES } from "../../../shared/constants/role.js";
 
 export class AuthService{
     constructor(userRepository)
@@ -147,14 +148,7 @@ export class AuthService{
         }
     }
 
-    async logout()
-    {
-        try {
-            
-        } catch (error) {
-            
-        }
-    }
+   
 
     async checkSuperAdminPermissions(userId)
     {

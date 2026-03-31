@@ -11,7 +11,7 @@ import ResponseFormatter from './shared/utils/responceFormator.js';
 import cookieParser from 'cookie-parser';
 //Routers
 import authRouter from './services/auth/routes/authRouter.js';
-
+import clientRouter from './services/client/routes/clientRoute.js';
 
 
 const app=express();
@@ -69,6 +69,9 @@ app.get("/",( req,res)=>{
 
 //api/auth/onboard-super-admin
 app.use("/api/auth",authRouter)
+
+//api/admin/client/onboard
+app.use("/api",clientRouter)
 
 
 app.use((req,res)=>{

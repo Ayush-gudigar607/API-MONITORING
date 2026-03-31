@@ -6,7 +6,7 @@ import mongoose from 'mongoose'
 
 const clientSchema=new mongoose.Schema({
     name:{
-        type:string,
+        type:String,
         required:true,
         trim:true,
         minlength:2,

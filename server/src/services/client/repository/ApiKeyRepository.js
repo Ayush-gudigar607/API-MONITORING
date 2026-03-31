@@ -1,4 +1,4 @@
-import BaseApikeysrepository from "./BaseApikeysRepository";
+import BaseApikeysrepository from "./BaseApikeysRepository.js";
 import ApiKey from "../../../shared/models/Apikey.js";
 import logger from "../../../shared/config/logger.js";
 

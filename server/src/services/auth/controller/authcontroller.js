@@ -50,7 +50,7 @@ export class AuthController{
     username,
     email,
     password,
-    role: role || APPLICATION_ROLES.CLIENT_VIEWER
+    role: role || APPLICATION_ROLES.CLIENT_ADMIN
 }
 
             const {token,user}=await this.authService.register(userData)
@@ -92,8 +92,6 @@ export class AuthController{
     async logout(req,res,next)
     {
         try {
-            // const userId=req.user.userId
-            // await this.authService.logout(userId)
             res.clearCookie("token")
             res.status(200).json(ResponseFormatter.success(null,"user logged out successfully",200))
         } catch (error) {
