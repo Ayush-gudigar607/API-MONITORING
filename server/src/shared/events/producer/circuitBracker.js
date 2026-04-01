@@ -49,6 +49,8 @@ export class CircuitBreaker{
             cooldownMs:this.cooldownMs
         })
     }
+
+
    //Method
     _reset()
     {
@@ -56,7 +58,6 @@ export class CircuitBreaker{
         this._failures=0
         this._halfOpenAttempts=0
         this.halfopenSuccesses=0
-
     }
   
 
