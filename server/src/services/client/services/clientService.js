@@ -207,6 +207,33 @@ export class clientService {
         throw error;
     }
   }
+
+
+  async getClientByApiKey(clientId,user)
+  {
+    try {
+      if(!this.canUserAccessclient(user,clientId))
+      {
+        throw new AppError("Access denied to tis client",403)
+      }
+
+      const apiKey=await this.apiKeyRepository.findByClientId(clientId);
+
+      const formattedResponce=apiKeys.map(key=>
+      {
+        const keyObj=key.toObject ?key.toObject():key;
+        delete keyObj.keyValue;
+        return keyObj
+      }
+      )
+
+      return formattedResponce
+    } catch (error) {
+      logger.error("Error getting client API Keys :",error);
+      throw error
+    }
+  }
+
   async getApiKeys(clientId, user) {
     try {
         const client=await this.clientRepository.findById(clientId)

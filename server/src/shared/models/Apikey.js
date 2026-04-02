@@ -139,6 +139,13 @@ apiKeySchema.index({ keyValue: 1, isActive: 1 });
 apiKeySchema.index({ environment: 1, clientId: 1 });
 apiKeySchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
+
+apiKeySchema.methods.isExpired=function()
+{
+  if(!this.expiredAt) return false
+  return new Date(this.expireAt) < new Date()
+}
+
 const ApiKey = mongoose.model('ApiKey', apiKeySchema);
 
 export default ApiKey;
