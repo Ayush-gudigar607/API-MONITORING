@@ -24,7 +24,7 @@ export function createEventProducer(overrides={})
         throw new Error("Invalid retry attempts configuration for RabbitMQ");       
 
     }
-
+   //we will create the channel manager, circuit breaker and retry strategy instances here and pass them to the EventProducer constructor. This allows us to centralize the configuration and management of these components.
     const channelManager=  overrides.channelManager  || new ConformChannelManager({rabbitmq:rmq,logger:log});
     
     const circuitBreaker= overrides.circuitBreaker || new CircuitBreaker({

@@ -122,6 +122,7 @@ export class EventProducer {
       const error = new Error(
         "EventProducer is shutting down. Cannot publish new events.",
       );
+      
       error.code = "SHUTDOWN_IN_PROGRESS";
       this.logger.warn(`[EventProducer] publish rejected-shutting down`, {
         eventId: eventData.eventId,

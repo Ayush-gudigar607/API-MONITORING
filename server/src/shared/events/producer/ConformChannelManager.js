@@ -28,12 +28,12 @@ export class ConformChannelManager extends EventEmitter {
       if (this.rabbitmq.connection) {
         connection = this.rabbitmq.connection;
       } else {
+        //this is the first time we are connecting to rabbitmq so we need to establish the connection
         const basechannel = await this.rabbitmq.connect();
-        if (!basechannel)
-          throw new Error("Failed to establish connection to RabbitMQ");
+        if (!basechannel) throw new Error("Failed to establish connection to RabbitMQ");
         connection = basechannel.connection;
       }
-
+     //now we have the connection we need to create a confirm channel
       const conformChannel = await connection.createConfirmChannel();
 
       conformChannel.on("drain", () => {
