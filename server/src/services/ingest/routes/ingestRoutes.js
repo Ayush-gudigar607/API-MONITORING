@@ -3,7 +3,7 @@ import ingestContainer from "../Dependencies/dependencies.js"
 const {ingestController}=ingestContainer;
 import validateApiKey from "../../../shared/middlewares/validateApiKey.js";
 import rateLimit from "express-rate-limit";
-import config from "../../../shared/config/config.js";
+import config from "../../../shared/config/index.js";
 
 const router=express.Router();
 
@@ -21,6 +21,6 @@ const ingestLimitter=rateLimit({
     legacyHeaders:false, //to disable the X-RateLimit-* headers
 })
 
-router.post('/ingest',validateApiKey,ingestLimitter,(req,res,next)=>ingestController.handleIngest(req,res,next))
+router.post("/", validateApiKey, ingestLimitter, (req, res, next) => ingestController.ingestHit(req, res, next))
 
 export default router;
