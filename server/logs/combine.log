@@ -1,0 +1,33 @@
+{"level":"info","message":"Initializing  database connections...","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"level":"info","message":"MongoDB is connected:mongodb://mongodb:27017/api_monitoring ","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"level":"info","message":"Connected to MongoDB","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"level":"info","message":"PG Pool Created","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"level":"info","message":"PG connected successfully at Wed Apr 15 2026 15:39:12 GMT+0000 (Coordinated Universal Time) ","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"level":"info","message":"Connected to Postgres","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"0":"a","1":"m","10":"_","11":"u","12":"s","13":"e","14":"r","15":":","16":"s","17":"e","18":"c","19":"u","2":"q","20":"r","21":"e","22":"_","23":"p","24":"a","25":"s","26":"s","27":"w","28":"o","29":"r","3":"p","30":"d","31":"@","32":"r","33":"a","34":"b","35":"b","36":"i","37":"t","38":"m","39":"q","4":":","40":":","41":"5","42":"6","43":"7","44":"2","45":"/","46":"a","47":"p","48":"i","49":"_","5":"/","50":"m","51":"o","52":"n","53":"i","54":"t","55":"o","56":"r","57":"i","58":"n","59":"g","6":"/","7":"a","8":"p","9":"i","level":"info","message":"Connecting to RabbitMQ...","service":"api-monitoring","timestamp":"2026-04-15 15:39:12"}
+{"address":"172.18.0.6","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Error connecting to RabbitMQ... connect ECONNREFUSED 172.18.0.6:5672","port":5672,"service":"api-monitoring","stack":"Error: connect ECONNREFUSED 172.18.0.6:5672\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","syscall":"connect","timestamp":"2026-04-15 15:39:13"}
+{"level":"info","message":"Connected to RabbitMQ","service":"api-monitoring","timestamp":"2026-04-15 15:39:13"}
+{"level":"info","message":"All connections initialized successfully. Starting server...","service":"api-monitoring","timestamp":"2026-04-15 15:39:13"}
+{"level":"info","message":"server started on port 5000","service":"api-monitoring","timestamp":"2026-04-15 15:39:13"}
+{"level":"info","message":"Environment:production","service":"api-monitoring","timestamp":"2026-04-15 15:39:13"}
+{"level":"info","message":"API available at :http://localhost:5000","service":"api-monitoring","timestamp":"2026-04-15 15:39:13"}
+{"ip":"::ffff:172.18.0.1","level":"info","message":"GET /","service":"api-monitoring","timestamp":"2026-04-15 16:07:44","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"}
+{"ip":"::ffff:172.18.0.1","level":"info","message":"GET /favicon.ico","service":"api-monitoring","timestamp":"2026-04-15 16:07:45","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"}
+{"level":"info","message":"Initializing  database connections...","service":"api-monitoring","timestamp":"2026-04-21 15:16:36"}
+{"level":"info","message":"MongoDB is connected:mongodb://mongodb:27017/api_monitoring ","service":"api-monitoring","timestamp":"2026-04-21 15:16:36"}
+{"level":"info","message":"Connected to MongoDB","service":"api-monitoring","timestamp":"2026-04-21 15:16:36"}
+{"level":"info","message":"PG Pool Created","service":"api-monitoring","timestamp":"2026-04-21 15:16:36"}
+{"level":"info","message":"Initializing  database connections...","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"MongoDB is connected:mongodb://mongodb:27017/api_monitoring ","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"Connected to MongoDB","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"PG Pool Created","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"PG connected successfully at Tue Apr 21 2026 15:16:40 GMT+0000 (Coordinated Universal Time) ","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"Connected to Postgres","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"0":"a","1":"m","10":"_","11":"u","12":"s","13":"e","14":"r","15":":","16":"s","17":"e","18":"c","19":"u","2":"q","20":"r","21":"e","22":"_","23":"p","24":"a","25":"s","26":"s","27":"w","28":"o","29":"r","3":"p","30":"d","31":"@","32":"r","33":"a","34":"b","35":"b","36":"i","37":"t","38":"m","39":"q","4":":","40":":","41":"5","42":"6","43":"7","44":"2","45":"/","46":"a","47":"p","48":"i","49":"_","5":"/","50":"m","51":"o","52":"n","53":"i","54":"t","55":"o","56":"r","57":"i","58":"n","59":"g","6":"/","7":"a","8":"p","9":"i","level":"info","message":"Connecting to RabbitMQ...","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"address":"172.18.0.5","code":"ECONNREFUSED","errno":-111,"level":"error","message":"Error connecting to RabbitMQ... connect ECONNREFUSED 172.18.0.5:5672","port":5672,"service":"api-monitoring","stack":"Error: connect ECONNREFUSED 172.18.0.5:5672\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)","syscall":"connect","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"Connected to RabbitMQ","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"All connections initialized successfully. Starting server...","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"server started on port 5000","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"Environment:production","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"API available at :http://localhost:5000","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
+{"level":"info","message":"SIGTERM received. Shutting down gracefully...","service":"api-monitoring","timestamp":"2026-04-21 15:18:22"}
