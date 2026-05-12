@@ -31,3 +31,35 @@
 {"level":"info","message":"Environment:production","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
 {"level":"info","message":"API available at :http://localhost:5000","service":"api-monitoring","timestamp":"2026-04-21 15:16:40"}
 {"level":"info","message":"SIGTERM received. Shutting down gracefully...","service":"api-monitoring","timestamp":"2026-04-21 15:18:22"}
+{"level":"info","message":"Initializing  database connections...","service":"api-monitoring","timestamp":"2026-05-12 20:20:22"}
+{"level":"info","message":"MongoDB is connected:mongodb://localhost:27017/api_monitoring ","service":"api-monitoring","timestamp":"2026-05-12 20:20:22"}
+{"level":"info","message":"Connected to MongoDB","service":"api-monitoring","timestamp":"2026-05-12 20:20:22"}
+{"level":"info","message":"PG Pool Created","service":"api-monitoring","timestamp":"2026-05-12 20:20:22"}
+{"code":"28P01","file":"auth.c","length":104,"level":"error","line":"334","message":"Failed to connect PG password authentication failed for user \"postgres\"","name":"error","routine":"auth_failed","service":"api-monitoring","severity":"FATAL","stack":"error: password authentication failed for user \"postgres\"\n    at D:\\Api Montirong\\server\\server\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async PostgresConnection.testConnection (file:///D:/Api%20Montirong/server/server/src/shared/config/postgres.js:43:22)\n    at async initializeConnections (file:///D:/Api%20Montirong/server/server/src/server.js:92:1)\n    at async startServer (file:///D:/Api%20Montirong/server/server/src/server.js:112:7)","timestamp":"2026-05-12 20:20:22"}
+{"level":"info","message":"Initializing  database connections...","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"MongoDB is connected:mongodb://localhost:27017/api_monitoring ","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"Connected to MongoDB","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"PG Pool Created","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"PG connected successfully at Tue May 12 2026 20:25:40 GMT+0530 (India Standard Time) ","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"Connected to Postgres","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"0":"a","1":"m","10":"_","11":"u","12":"s","13":"e","14":"r","15":":","16":"s","17":"e","18":"c","19":"u","2":"q","20":"r","21":"e","22":"_","23":"p","24":"a","25":"s","26":"s","27":"w","28":"o","29":"r","3":"p","30":"d","31":"@","32":"l","33":"o","34":"c","35":"a","36":"l","37":"h","38":"o","39":"s","4":":","40":"t","41":":","42":"5","43":"6","44":"7","45":"2","46":"/","47":"a","48":"p","49":"i","5":"/","50":"_","51":"m","52":"o","53":"n","54":"i","55":"t","56":"o","57":"r","58":"i","59":"n","6":"/","60":"g","7":"a","8":"p","9":"i","level":"info","message":"Connecting to RabbitMQ...","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"RabbitMQ connected successfully","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"Connected to RabbitMQ","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"All connections initialized successfully. Starting server...","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"server started on port 5000","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"Environment:development","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"API available at :http://localhost:5000","service":"api-monitoring","timestamp":"2026-05-12 20:25:40"}
+{"level":"info","message":"Initializing  database connections...","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"MongoDB is connected:mongodb://localhost:27017/api_monitoring ","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"Connected to MongoDB","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"PG Pool Created","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"PG connected successfully at Tue May 12 2026 20:26:09 GMT+0530 (India Standard Time) ","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"Connected to Postgres","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"0":"a","1":"m","10":"_","11":"u","12":"s","13":"e","14":"r","15":":","16":"s","17":"e","18":"c","19":"u","2":"q","20":"r","21":"e","22":"_","23":"p","24":"a","25":"s","26":"s","27":"w","28":"o","29":"r","3":"p","30":"d","31":"@","32":"l","33":"o","34":"c","35":"a","36":"l","37":"h","38":"o","39":"s","4":":","40":"t","41":":","42":"5","43":"6","44":"7","45":"2","46":"/","47":"a","48":"p","49":"i","5":"/","50":"_","51":"m","52":"o","53":"n","54":"i","55":"t","56":"o","57":"r","58":"i","59":"n","6":"/","60":"g","7":"a","8":"p","9":"i","level":"info","message":"Connecting to RabbitMQ...","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"RabbitMQ connected successfully","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"Connected to RabbitMQ","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"All connections initialized successfully. Starting server...","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"server started on port 5000","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"Environment:development","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"level":"info","message":"API available at :http://localhost:5000","service":"api-monitoring","timestamp":"2026-05-12 20:26:09"}
+{"ip":"::1","level":"info","message":"GET /health","service":"api-monitoring","timestamp":"2026-05-12 20:26:12","userAgent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8115"}
