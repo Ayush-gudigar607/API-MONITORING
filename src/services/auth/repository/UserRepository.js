@@ -1,82 +1,103 @@
 import BaseRepository from "./BaseRepository.js";
-import User from "../../../shared/models/User.js";
-import logger from "../../../shared/config/logger.js";
-//why i add mongodb because i future i can change the postgress also
+import User from "../../../shared/models/User.js"
+import logger from "../../../shared/config/logger.js"
+
+/**
+ * MongoDB implementation of the UserRepository.
+ * This class provides methods to interact with the User collection in MongoDB.
+ */
 class MongoUserRepository extends BaseRepository {
-  constructor() {
-    super(User);
-  }
-
-  async create(userdata) {
-    try {
-      let data = { ...userdata };
-      if (data.role == "super_admin " && !data.permissions) {
-        data.permissions = {
-          canCreateApiKeys: true,
-          canManageUsers: true,
-          CanViewAnalytics: true,
-          canExportData: true,
-        };
-      }
-
-      const user = new this.model(data);
-      await user.save();
-
-      logger.info("user created ", { username: user.username });
-      return user;
-    } catch (error) {
-      logger.info("Error creating user", error);
-      throw error;
+    constructor() {
+        super(User)
     }
-  }
 
-  //findById
-  async findById(id)
-  {
-    try {
-        const user=await this.model.findById(id)
-        return user
-    } catch (error) {
-        logger.info("Error finding user with Id", error);
-        throw error;
-    }
-  }
 
-  async findByUsername(username)
-  {
-    try {
-        const user=await this.model.findOne({
-            username:username
-        })
-        return user
-    } catch (error) {
-        logger.info("Error finding user By username", error);
-        throw error;
-    }
-  }
+    /**
+     * Creates a new user in the database.
+     * @param {Object} userData - The data of the user to be created.
+     * @returns {Promise<Object>} - Returns the created user object.
+     */
+    async create(userData) {
+        try {
+            let data = { ...userData }
+            if (data.role === "super_admin" && !data.permissions) {
+                data.permissions = {
+                    canCreateApiKeys: true,
+                    canManageUsers: true,
+                    canViewAnalytics: true,
+                    canExportData: true,
+                }
+            }
 
-  //find by email
-  async findByEmail(email)
-  {
-    try {
-        const user=await this.model.findOne({email:email})
-        return user
-    } catch (error) {
-        logger.error("Error finding user By Email", error);
-        throw error;
-    }
-  }
+            const user = new this.model(data);
+            await user.save();
 
-  async findAll()
-  {
-    try {
-        const user=await this.model.find({isActive:true}).Select("-password")
-        return user
-    } catch (error) {
-        logger.error("Error finding all user", error);
-        throw error
+            logger.info("User created", { username: user.username });
+            return user
+        } catch (error) {
+            logger.error("Error creating user", error)
+            throw error;
+        }
     }
-  }
+
+    /**
+     * Finds a user by their ID.
+     * @param {string} userId - The ID of the user.
+     * @returns {Promise<Object>} - Returns the user object if found.
+     */
+    async findById(userId) {
+        try {
+            const user = await this.model.findById(userId)
+            return user
+        } catch (error) {
+            logger.error("Error finding user by id", error)
+            throw error;
+        }
+    }
+
+    /**
+     * Finds a user by their username.
+     * @param {string} username - The username of the user.
+     * @returns {Promise<Object>} - Returns the user object if found.
+     */
+    async findByUsername(username) {
+        try {
+            const user = await this.model.findOne({ username })
+            return user
+        } catch (error) {
+            logger.error("Error finding user by username", error)
+            throw error;
+        }
+    }
+
+    /**
+     * Finds a user by their email.
+     * @param {string} email - The email of the user.
+     * @returns {Promise<Object>} - Returns the user object if found.
+     */
+    async findByEmail(email) {
+        try {
+            const user = await this.model.findOne({ email })
+            return user
+        } catch (error) {
+            logger.error("Error finding user by email", error)
+            throw error;
+        }
+    }
+
+    /**
+     * Finds all active users.
+     * @returns {Promise<Array>} - Returns an array of active user objects.
+     */
+    async findAll() {
+        try {
+            const user = await this.model.find({ isActive: true }).select("-password")
+            return user
+        } catch (error) {
+            logger.error("Error finding user by email", error)
+            throw error;
+        }
+    }
 }
 
-export default  new MongoUserRepository;
+export default new MongoUserRepository()

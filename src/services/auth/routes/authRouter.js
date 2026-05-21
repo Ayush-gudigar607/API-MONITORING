@@ -1,22 +1,45 @@
-import express from 'express'
-import dependencies from '../Dependencies/Dependencies.js'
-import authorize from '../../../shared/middlewares/authorize.js'
-import authentiate from '../../../shared/middlewares/authentictate.js'
-import  validate from '../../shared/middlewares/validate.js'
-import requestlogger from '../../../shared/middlewares/requestlogger.js'
-import ResponseFormatter from '../../shared/utils/ResponseFormatter'
-import { onboardsuperAdminSchema,loginSchema,registerSchema} from '../validation/authSchema.js'
-import {APPLICATION_RULES} from "../../../shared/constants/role.js"
+import express from "express";
+import dependencies from "../Dependencies/dependencies.js"
+import authorize from "../../../shared/middlewares/authorize.js"
+import authenticate from "../../../shared/middlewares/authenticate.js"
+import validate from "../../../shared/middlewares/validate.js";
+import requestLogger from "../../../shared/middlewares/requestLogger.js";
+import { onboardSuperAdminSchema, loginSchema, registrationSchema } from "../validation/authSchema.js";
+import { APPLICATION_ROLES } from "../../../shared/constants/roles.js";
 
-const router=express.Router()
-const {controllers}=dependencies
+const router = express.Router();
+const { controller } = dependencies;
+const authController = controller.authController
 
-const authcontroller=controllers.AuthController
+router.post("/onboard-super-admin",
+    requestLogger,
+    validate(onboardSuperAdminSchema),
+    (req, res, next) => authController.onboardSuperAdmin(req, res, next)
+)
 
-router.post("/onboard-superadmin",
-    requestlogger,
-    validate(onboardsuperAdminSchema),
-    (req,res,next)=>authcontroller.onboardSuperAdmin(req,res,next)
+router.post("/register",
+    requestLogger,
+    authenticate,
+    authorize([APPLICATION_ROLES.SUPER_ADMIN]),
+    validate(registrationSchema),
+    (req, res, next) => authController.register(req, res, next)
+)
+
+router.post("/login",
+    requestLogger,
+    validate(loginSchema),
+    (req, res, next) => authController.login(req, res, next)
+);
+
+router.get("/profile",
+    requestLogger,
+    authenticate,
+    (req, res, next) => authController.getProfile(req, res, next)
+)
+
+router.get("/logout",
+    requestLogger,
+    (req, res, next) => authController.logout(req, res, next)
 )
 
 export default router

@@ -1,36 +1,35 @@
-import { AuthController } from "../controller/authcontroller.js";
-import {AuthService} from "../service/Authservice.js"
-import  MongoUserRepository from "../repository/UserRepository.js"
+import { AuthController } from "../controller/authController.js";
+import { AuthService } from "../service/authService.js";
+import MongoUserRepository from "../repository/UserRepository.js"
 
-class Container{
-    static init()
-    {
-        const repositories={
-            userRepository:MongoUserRepository()
+/**
+ * Dependency Injection Container for the Auth module.
+ * This container initializes and manages the dependencies for the Auth module,
+ * including repositories, services, and controllers.
+ */
+class Container {
+    static init() {
+        // Initialize repositories
+        const repositories = {
+            userRepository: MongoUserRepository
         };
 
-        const services={
-            AuthService:new AuthService(repositories.userRepository)
+        // Initialize services with their respective repositories
+        const services = {
+            authService: new AuthService(repositories.userRepository)
+        };
+
+        // Initialize controllers with their respective services
+        const controller = {
+            authController: new AuthController(services.authService)
         }
 
-        const controllers={
-            AuthController:new AuthController(services.AuthService)
+        return {
+            repositories, services, controller
         }
-
-        return {repositories,services,controllers}
     }
 }
 
-// Call the container initialization function immediately
-// This creates all repositories, services, and controllers
 const initialized = Container.init();
-
-// Export the Container class itself
-// This allows other files to manually call Container.init()
-// if they want to create a fresh dependency graph
 export { Container };
-
-// Export the already initialized object as the default export
-// This is usually imported directly to access controllers/services
-export default initialized;
-
+export default initialized
